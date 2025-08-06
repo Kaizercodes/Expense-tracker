@@ -10,5 +10,6 @@ public class Main2 extends Application {
     @Override
     public void start(Stage primaryStage) {
 
+    primaryStage.show();
     }
 }
