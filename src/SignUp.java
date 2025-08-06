@@ -1,6 +1,6 @@
 public class SignUp {
     private String password, userName,userEmail,verificationReply;
-
+    //testing commit
     public boolean EmailExist(){
         return false;
     }
