@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 /*
         UTILITIES CLASS
@@ -8,7 +9,6 @@ import java.time.format.DateTimeFormatter;
         1.Format currency
         2.date
         3.Category Validation
-        4.Amount Validation depending on balance
         5.Total Calculation
         6.Expense ID
         8. Filtering expenses and sorting
@@ -33,6 +33,7 @@ public class UTILITIES{
 
       return  date;
     }
+
     //method for time
     public static String Time(){
         String time;
@@ -42,9 +43,69 @@ public class UTILITIES{
         time = now.format(formatter);
         return time;
     }
+
+    // method for ID generation
     public static int IDGen(){
-        int newId = IDGenerator.generateID();
+        int newId = IDGenerate.generateID();
         return newId;
     }
 
+    // formating money to be in form of 2000.00
+    public static  Double roundToTwoDecimal(double amount){
+        String amountFormatted = String.format("%.2f",amount);
+        double amounts = Double.parseDouble(amountFormatted);
+        return amounts;
+    }
+
+    // amount validation
+    public static boolean isValidAmount(String amount){
+        try{
+            Double.parseDouble(amount);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    // category validation
+    public static boolean isValidCategory(String category){
+        boolean isValid = false;
+        String [] categories = {"Food & Groceries","Housing & Utilities",
+                "Transportation","Education","Health & Medical",
+                "Personal & Family","Entertainment & recreation",
+                "Savings and Investment", "Debt repayment","Other"};
+
+        for(int index = 0;index < categories.length; index++){
+            if(categories[index].equalsIgnoreCase(category.trim())){
+                isValid = true;
+            }
+        }
+        return isValid;
+    }
+
+    // total amount calculations
+    public static double totalAmount(List<Double> amounts){
+        double total = 0.00;
+        for(double amount : amounts){
+            total += amount;
+        }
+        total = roundToTwoDecimal(total);
+        return total;
+    }
+
+    // average amount for reports
+    public static double averageAmount(List<Double> amounts){
+        double total = 0.00;
+        double length = amounts.size();
+        for(double amount : amounts){
+            total += amount;
+        }
+        double average = total/length;
+        average = roundToTwoDecimal(average);
+        return average;
+    }
+
+    public static void main(String[] args){
+
+    }
 }
