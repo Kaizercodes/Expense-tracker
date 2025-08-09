@@ -1,6 +1,8 @@
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /*
@@ -103,6 +105,20 @@ public class UTILITIES{
         double average = total/length;
         average = roundToTwoDecimal(average);
         return average;
+    }
+
+    // 5 recent expenses
+    public static String recentTransactions(List<String> recent){
+        int totalRecents = 5;
+        // if the list is empty
+        if(recent.isEmpty()) return "No transactions are available";
+        StringBuilder results = new StringBuilder("Recent transactions\n");
+        List<String> reversed = new ArrayList<>(recent);
+        Collections.reverse(reversed);
+        for(int recents = 0; recents < Math.min(totalRecents,reversed.size()); recents++){
+            results.append('-').append(reversed.get(recents)).append("\n");
+        }
+        return results.toString() ;
     }
 
     public static void main(String[] args){
