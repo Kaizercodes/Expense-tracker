@@ -1,0 +1,13 @@
+Debt Repayment:gggdgdgd:250
+Food & Groceries: hfhfhfhf : 250
+Housing and Utilities: hhdhdh :500
+Transportation: ggdgdgd :500
+Education: hfhfhfhfh :500
+Health & Medical:hdhdhd:500
+Personal & Fam: dgdgdgd :400
+Food & Groceries: hfhfhfhf : 50
+Entertainment & Recreation: xgggdgdgddfd :500
+Savings & Investment:hhhdhdhdhdhd:500
+Debt Repayment:gggdgdgd:100
+Other:ggdgdgd:300
+Personal & Fam: dgdgdgd :75

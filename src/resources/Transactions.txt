@@ -1,0 +1,11 @@
+Food & Groceries :bought sausage : 900
+Food & Groceries: Bought sugar : 5400
+Education: Bought Exercise Book  :12000
+Health & Medical : Paid hospital bills : 7000
+Health & Medical : Paid hospital bills : 5400
+Food & Groceries: bought Milk : 6700
+Personal & Fam : went on a visit : 2000
+Transportation: booked a taxi : 500
+Transportation : hoped on a bus: 350
+Transportation : got kabaza : 200
+

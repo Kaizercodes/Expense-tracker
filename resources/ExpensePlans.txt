@@ -1,0 +1,10 @@
+Food & Groceries:500.85
+Housing and Utilities:800.0
+Transportation:900.0
+Education:1000.85
+Health & Medical:574.78
+Personal & Fam:900.02
+Entertainment & Recreation:650.89
+Savings & Investment:890.0
+Debt Repayment:567.0
+Other:567.9
