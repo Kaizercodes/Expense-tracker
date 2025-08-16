@@ -5,19 +5,28 @@ import java.security.NoSuchAlgorithmException;
 
 public class SignUp {
     private String password, userName,userEmail,verificationReply;
+    private final String[] verificationQuestions = {"What's your favorite color?",
+                                                    "what's your mothers name?",
+                                                    "what's your user name?"};
     //testing commit
-    public boolean EmailExist(){
-        return false;
+
+    //to check if the email has already been used to create another account
+    public boolean EmailExist(String userEmail){
+        File isUsedDirectory = new File(userEmail);
+        return isUsedDirectory.exists();
     }
     public void setUserEmail(String userEmail){
         this.userEmail=userEmail;
     }
-    public void setUserName(){}
+    public void setUserName(String userName){this.userName = userName;}
     public void setPassword(String password){
         this.password=password;
     }
-    public String getVerificationReply() {
-        return verificationReply;
+    public String getVerificationQuestion(int questionNumber){          //the question numbers should count from 1
+        return verificationQuestions[questionNumber - 1];
+    }
+    public void setVerificationReply(String reply){
+        this.verificationReply = reply;
     }
     public void saveAccount(){
         try{
@@ -52,8 +61,4 @@ public class SignUp {
 
         return hexEntity.toString();
     }
-
-
-
-
 }
