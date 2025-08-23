@@ -15,7 +15,7 @@ import org.w3c.dom.Text;
 
 import java.net.PasswordAuthentication;
 
-//testing recomit
+//testing recomitt
 public class LogIn_SignUpGUI extends Application{
 
     SignUp signUpObj = new SignUp();
