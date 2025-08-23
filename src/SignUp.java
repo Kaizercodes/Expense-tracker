@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 public class SignUp {
     private String password, userName,userEmail,verificationReply;
     //testing commit
-    public boolean EmailExist(){
+    public boolean EmailExist(String userEmail){
         return false;
     }
     public void setUserEmail(String userEmail){

@@ -76,8 +76,8 @@ public class LogIn_SignUpGUI extends Application{
                 if(passwordInput.getText()!=null)
                     signUpObj.setPassword(passwordInput.getText());
                 else signUpObj.setPassword(passwordText.getText());
-
-                if(!signUpObj.emailExist())
+                String email_in= emailInput.getText();
+                if(!signUpObj.EmailExist(email_in))
                     signUpObj.saveAccount();
                 else{
                     Alert alert = new Alert(Alert.AlertType.ERROR);
