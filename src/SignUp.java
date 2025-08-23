@@ -9,13 +9,16 @@ public class SignUp {
                                                     "what's your mothers name?",
                                                     "what's your user name?"};
     //testing commit
-    public boolean EmailExist(String userEmail){
-        return false;
+    public static boolean EmailExists(String userEmail){
+        File isUsedDirectory = new File(userEmail);
+        return isUsedDirectory.exists();
     }
     public void setUserEmail(String userEmail){
         this.userEmail=userEmail;
     }
-    public void setUserName(){}
+    public void setUserName(String name){
+        this.userName = name;
+    }
     public void setPassword(String password){
         this.password=password;
     }
@@ -24,8 +27,8 @@ public class SignUp {
     public String getVerificationQuestion(int questionNumber){
         return verificationQuestions[questionNumber - 1];
     }
-    public String getVerificationReply() {
-        return verificationReply;
+    public void setVerificationReply(String reply){
+        this.verificationReply = reply;
     }
     public void saveAccount(){
         try{
