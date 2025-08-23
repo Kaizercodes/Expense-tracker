@@ -69,7 +69,6 @@ public class LogIn_SignUpGUI extends Application{
         grid.setVgap(10);
 
         Button signUpBtn = new Button("sign up");
-        signUpBtn.setAlignment(Pos.CENTER);
         signUpBtn.setOnAction(ActionEvent->{
             if(confirmPass.getText().equals(passwordInput.getText()) || confirmPass.getText().equals(passwordText.getText())){
                 //allow login & save account
