@@ -5,6 +5,9 @@ import java.security.NoSuchAlgorithmException;
 
 public class SignUp {
     private String password, userName,userEmail,verificationReply;
+    private final String[] verificationQuestions = {"What's your favorite color?",
+                                                    "what's your mothers name?",
+                                                    "what's your user name?"};
     //testing commit
     public boolean EmailExist(String userEmail){
         return false;
@@ -15,6 +18,11 @@ public class SignUp {
     public void setUserName(){}
     public void setPassword(String password){
         this.password=password;
+    }
+
+    //when using this method start the questionNumbers from 1
+    public String getVerificationQuestion(int questionNumber){
+        return verificationQuestions[questionNumber - 1];
     }
     public String getVerificationReply() {
         return verificationReply;
