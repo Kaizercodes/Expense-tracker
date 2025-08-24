@@ -37,7 +37,7 @@ public class SignUp {
             File userInfo = new File(userEmail+"/UserInfo.txt");
             userInfo.createNewFile();
             PrintWriter saveToFile = new PrintWriter(new BufferedWriter(new FileWriter(userInfo)));
-            saveToFile.printf("%s\n%s\n%s\n%s",userName,userName,hashPasswords(password),hashPasswords(verificationReply));
+            saveToFile.printf("%s\n%s\n%s\n%s",userEmail,userName,hashPasswords(password),hashPasswords(verificationReply));
             saveToFile.close();
         }catch (IOException e){
             Label error = new Label("Error Saving Account : "+ e.getMessage());

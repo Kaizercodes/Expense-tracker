@@ -27,6 +27,7 @@ public class LogIn{
             return getPassword().equals(new SignUp().hashPasswords(password));
         }
         public boolean checkVerificationAnswer(String reply){
+            getPassword();
             String verificationAnswers = userInfo[3];
             return verificationAnswers.equals(new SignUp().hashPasswords(reply));
         }
