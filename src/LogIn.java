@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 //testing recommit
@@ -14,19 +16,19 @@ public class LogIn{
         public String getEmail(){
             return userEmail;
         }
-        private String getPassword(){
+        private String getPassword() throws FileNotFoundException {
             String password = "";
-            Scanner reader = new Scanner(userEmail + "//UserInfo.txt");
+            Scanner reader = new Scanner(new File(userEmail + "//UserInfo.txt"));
             for(int i = 0; reader.hasNextLine(); i++){
                 userInfo[i] = reader.nextLine();
             }
             password = userInfo[2];
             return password;
         }
-        public boolean verifiedPassword(String password){
+        public boolean verifiedPassword(String password) throws FileNotFoundException {
             return getPassword().equals(new SignUp().hashPasswords(password));
         }
-        public boolean checkVerificationAnswer(String reply){
+        public boolean checkVerificationAnswer(String reply) throws FileNotFoundException {
             getPassword();
             String verificationAnswers = userInfo[3];
             return verificationAnswers.equals(new SignUp().hashPasswords(reply));
