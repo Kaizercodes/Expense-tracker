@@ -72,9 +72,6 @@ public class LogIn_SignUpGUI extends Application{
         container1.getChildren().addAll(grid,nextBtn);
 
         //disabling button if the fields are not field
-        /*nextBtn.disableProperty().bind(userNameInput.textProperty().isEmpty().or(emailInput.textProperty().isEmpty()));
-        nextBtn.disableProperty().bind(passwordInput.textProperty().isEmpty().and(passwordText.textProperty().isEmpty()));
-        nextBtn.disableProperty().bind(confirmPass.textProperty().isEmpty().and(confrimPassText.textProperty().isEmpty()));*/
         nextBtn.disableProperty().bind(
                 userNameInput.textProperty().isEmpty()
                         .or(emailInput.textProperty().isEmpty())
