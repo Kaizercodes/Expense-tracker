@@ -1,17 +1,13 @@
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.geometry.HPos;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.kordamp.ikonli.fontawesome.FontAwesome;
 import org.kordamp.ikonli.javafx.FontIcon;
-import org.w3c.dom.Text;
+import javafx.beans.binding.Bindings;
 
 import java.net.PasswordAuthentication;
 
@@ -35,6 +31,9 @@ public class LogIn_SignUpGUI extends Application{
     }
 
     public VBox signUp(){
+        VBox signUpBox= new VBox(10);
+        VBox container1 = new VBox(10),container2 = new VBox(10);
+        /************ fields for container1, which holds the first fields **********/
         GridPane grid = new GridPane();
         Label userName = new Label("UserName");
         TextField userNameInput = new TextField();
@@ -68,8 +67,13 @@ public class LogIn_SignUpGUI extends Application{
         grid.setHgap(5);
         grid.setVgap(10);
 
-        Button signUpBtn = new Button("sign up");
-        signUpBtn.setOnAction(ActionEvent->{
+        Button nextBtn = new Button("Next");
+        container1.getChildren().addAll(grid,nextBtn);
+        //disabling button if the fields are not field
+        nextBtn.disableProperty().bind(userNameInput.textProperty().isEmpty().or(emailInput.textProperty().isEmpty()));
+        nextBtn.disableProperty().bind(passwordInput.textProperty().isEmpty().and(passwordText.textProperty().isEmpty()));
+        nextBtn.disableProperty().bind(confirmPass.textProperty().isEmpty().and(confrimPassText.textProperty().isEmpty()));
+        nextBtn.setOnAction(ActionEvent->{
             if(confirmPass.getText().equals(passwordInput.getText()) || confirmPass.getText().equals(passwordText.getText())){
                 //allow login & save account
                 signUpObj.setUserEmail(emailInput.getText());
@@ -99,9 +103,14 @@ public class LogIn_SignUpGUI extends Application{
                 confirmPass.setStyle("-fx-border-color: red;");
             }
         });
-        VBox signUpBox = new VBox(10);
-        signUpBox.getChildren().addAll(grid,signUpBtn);
 
+        Label question1 = new Label();
+
+
+
+
+
+        signUpBox.getChildren().addAll();
         return signUpBox;
     }
     private Button showPassword(PasswordField passwordField, TextField passwordText){
