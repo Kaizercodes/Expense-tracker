@@ -5,19 +5,30 @@ import java.security.NoSuchAlgorithmException;
 
 public class SignUp {
     private String password, userName,userEmail,verificationReply;
+    private final String[] verificationQuestions = {"What's your favorite color?",
+                                                    "what's your mothers name?",
+                                                    "what's your user name?"};
     //testing commit
-    public boolean EmailExist(String userEmail){
-        return false;
+    public static boolean EmailExists(String userEmail){
+        File isUsedDirectory = new File(userEmail);
+        return isUsedDirectory.exists();
     }
     public void setUserEmail(String userEmail){
         this.userEmail=userEmail;
     }
-    public void setUserName(){}
+    public void setUserName(String name){
+        this.userName = name;
+    }
     public void setPassword(String password){
         this.password=password;
     }
-    public String getVerificationReply() {
-        return verificationReply;
+
+    //when using this method start the questionNumbers from 1
+    public String getVerificationQuestion(int questionNumber){
+        return verificationQuestions[questionNumber - 1];
+    }
+    public void setVerificationReply(String reply){
+        this.verificationReply = reply;
     }
     public void saveAccount(){
         try{
@@ -26,7 +37,7 @@ public class SignUp {
             File userInfo = new File(userEmail+"/UserInfo.txt");
             userInfo.createNewFile();
             PrintWriter saveToFile = new PrintWriter(new BufferedWriter(new FileWriter(userInfo)));
-            saveToFile.printf("%s\n%s\n%s\n%s",userName,userName,hashPasswords(password),hashPasswords(verificationReply));
+            saveToFile.printf("%s\n%s\n%s\n%s",userEmail,userName,hashPasswords(password),hashPasswords(verificationReply));
             saveToFile.close();
         }catch (IOException e){
             Label error = new Label("Error Saving Account : "+ e.getMessage());
