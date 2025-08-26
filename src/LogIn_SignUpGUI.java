@@ -1,16 +1,16 @@
 import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.kordamp.ikonli.fontawesome.FontAwesome;
 import org.kordamp.ikonli.javafx.FontIcon;
-import javafx.beans.binding.Bindings;
-
-import java.awt.event.ActionEvent;
-import java.net.PasswordAuthentication;
 
 //testing recomitt
 public class LogIn_SignUpGUI extends Application{
@@ -72,9 +72,15 @@ public class LogIn_SignUpGUI extends Application{
         container1.getChildren().addAll(grid,nextBtn);
 
         //disabling button if the fields are not field
-        nextBtn.disableProperty().bind(userNameInput.textProperty().isEmpty().or(emailInput.textProperty().isEmpty()));
+        /*nextBtn.disableProperty().bind(userNameInput.textProperty().isEmpty().or(emailInput.textProperty().isEmpty()));
         nextBtn.disableProperty().bind(passwordInput.textProperty().isEmpty().and(passwordText.textProperty().isEmpty()));
-        nextBtn.disableProperty().bind(confirmPass.textProperty().isEmpty().and(confrimPassText.textProperty().isEmpty()));
+        nextBtn.disableProperty().bind(confirmPass.textProperty().isEmpty().and(confrimPassText.textProperty().isEmpty()));*/
+        nextBtn.disableProperty().bind(
+                userNameInput.textProperty().isEmpty()
+                        .or(emailInput.textProperty().isEmpty())
+                        .or(passwordInput.textProperty().isEmpty().and(passwordText.textProperty().isEmpty()))
+                                .or(confirmPass.textProperty().isEmpty().and(confrimPassText.textProperty().isEmpty()))
+        );
         nextBtn.setOnAction(ActionEvent->{
             if(!signUpObj.EmailExists(emailInput.getText())){
                 boolean confirmation1 = (confirmPass.getText().equals(passwordInput.getText()))||(confirmPass.getText().equals(passwordText.getText()));
@@ -103,30 +109,44 @@ public class LogIn_SignUpGUI extends Application{
                 emailInput.setStyle("-fx-border-color: red");
             }
         });
-
+/****** container2...holds security Questions************/
         Label que1 = new Label(signUpObj.getVerificationQuestion(1));
         TextField ans1 = new TextField();
-        Label que2 = new Label(signUpObj.getVerificationQuestion(1));
+        Label que2 = new Label(signUpObj.getVerificationQuestion(2));
         TextField ans2 = new TextField();
-        Label que3 = new Label(signUpObj.getVerificationQuestion(1));
+        Label que3 = new Label(signUpObj.getVerificationQuestion(3));
         TextField ans3 = new TextField();
         Separator line = new Separator();
-        container2.getChildren().addAll(que1,ans1,line,que2,ans2,line,que3,ans3);
-        Button signUpBtn = new Button("SIGN UP");
+        Separator line1 = new Separator();
+        container2.getChildren().addAll(que1,ans1,line,que2,ans2,line1,que3,ans3);
         container2.setVisible(false);
         container2.setManaged(false);
+        ans1.setPrefColumnCount(15);ans2.setPrefColumnCount(15);ans3.setPrefColumnCount(15);
+        Button signUpBtn = new Button("SIGN UP");
+        container2.getChildren().add(signUpBtn);
         signUpBtn.setOnAction(ActionEvent->{
             String emailHold = emailInput.getText();
             String userNameHold = userNameInput.getText();
             String passwordHold ;
             String verifAnswer=ans1.getText()+ans2.getText()+ans3.getText();
-            if(passwordInput.getText()==null)
-                passwordHold=passwordText.getText();
-            else passwordHold=passwordInput.getText();
+            if(passwordInput.isVisible())
+                passwordHold=passwordInput.getText();
+            else passwordHold=passwordText.getText();
             signupButon(userNameHold,emailHold,passwordHold,verifAnswer);
         });
 
-        container1.prefWidthProperty().bind();
+        signUpBtn.disableProperty().bind( //disables button when text fields are not filled
+                ans1.textProperty().isEmpty()
+                        .or(ans2.textProperty().isEmpty())
+                        .or(ans3.textProperty().isEmpty())
+        );
+        //Aligning & Binding with properties
+        container1.setPadding(new Insets(10));
+        container1.prefWidthProperty().bind(signUpBox.widthProperty());
+        container2.setPadding(new Insets(10));
+        container2.prefWidthProperty().bind(signUpBox.widthProperty());
+        container2.setAlignment(Pos.CENTER);
+        container2.setFillWidth(false);
         signUpBox.getChildren().addAll(container1,container2);
         return signUpBox;
     }
