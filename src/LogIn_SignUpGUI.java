@@ -71,7 +71,7 @@ public class LogIn_SignUpGUI extends Application{
         Button nextBtn = new Button("Next");
         container1.getChildren().addAll(grid,nextBtn);
 
-        //disabling button if the fields are not field
+        //disabling button if the fields are not filled
         nextBtn.disableProperty().bind(
                 userNameInput.textProperty().isEmpty()
                         .or(emailInput.textProperty().isEmpty())
