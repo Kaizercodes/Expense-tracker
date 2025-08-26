@@ -9,6 +9,7 @@ import org.kordamp.ikonli.fontawesome.FontAwesome;
 import org.kordamp.ikonli.javafx.FontIcon;
 import javafx.beans.binding.Bindings;
 
+import java.awt.event.ActionEvent;
 import java.net.PasswordAuthentication;
 
 //testing recomitt
@@ -69,48 +70,64 @@ public class LogIn_SignUpGUI extends Application{
 
         Button nextBtn = new Button("Next");
         container1.getChildren().addAll(grid,nextBtn);
+
         //disabling button if the fields are not field
         nextBtn.disableProperty().bind(userNameInput.textProperty().isEmpty().or(emailInput.textProperty().isEmpty()));
         nextBtn.disableProperty().bind(passwordInput.textProperty().isEmpty().and(passwordText.textProperty().isEmpty()));
         nextBtn.disableProperty().bind(confirmPass.textProperty().isEmpty().and(confrimPassText.textProperty().isEmpty()));
         nextBtn.setOnAction(ActionEvent->{
-            if(confirmPass.getText().equals(passwordInput.getText()) || confirmPass.getText().equals(passwordText.getText())){
-                //allow login & save account
-                signUpObj.setUserEmail(emailInput.getText());
-                if(passwordInput.getText()!=null)
-                    signUpObj.setPassword(passwordInput.getText());
-                else signUpObj.setPassword(passwordText.getText());
-                String email_in= emailInput.getText();
-                if(!signUpObj.EmailExist(email_in))
-                    signUpObj.saveAccount();
-                else{
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Email Validation");
-                    alert.setHeaderText("YOUR EMAIL IS ALREADY IN USE");
-                    alert.setContentText("You can't use the same email twice");
-                    alert.showAndWait();
-
+            if(!signUpObj.EmailExists(emailInput.getText())){
+                boolean confirmation1 = (confirmPass.getText().equals(passwordInput.getText()))||(confirmPass.getText().equals(passwordText.getText()));
+                boolean confirmation2 = (confrimPassText.getText().equals(passwordInput.getText()))||(confrimPassText.getText().equals(passwordText.getText()));
+                if(confirmation1||confirmation2){
+                    container1.setVisible(false);
+                    container1.setManaged(false);
+                    container2.setVisible(true);
+                    container2.setManaged(true);
                 }
-
-            }else{
+                else{
                 //alert the user
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Confirm Password");
                 alert.setHeaderText("YOUR PASSWORDS DONT MATCH");
                 alert.setContentText("Please retry to confirm your password");
                 alert.showAndWait();
-
                 confirmPass.setStyle("-fx-border-color: red;");
+                }
+            } else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Email Validation");
+                alert.setHeaderText("YOUR EMAIL IS ALREADY IN USE");
+                alert.setContentText("You can't use the same email twice");
+                alert.showAndWait();
+                emailInput.setStyle("-fx-border-color: red");
             }
         });
 
-        Label question1 = new Label();
+        Label que1 = new Label(signUpObj.getVerificationQuestion(1));
+        TextField ans1 = new TextField();
+        Label que2 = new Label(signUpObj.getVerificationQuestion(1));
+        TextField ans2 = new TextField();
+        Label que3 = new Label(signUpObj.getVerificationQuestion(1));
+        TextField ans3 = new TextField();
+        Separator line = new Separator();
+        container2.getChildren().addAll(que1,ans1,line,que2,ans2,line,que3,ans3);
+        Button signUpBtn = new Button("SIGN UP");
+        container2.setVisible(false);
+        container2.setManaged(false);
+        signUpBtn.setOnAction(ActionEvent->{
+            String emailHold = emailInput.getText();
+            String userNameHold = userNameInput.getText();
+            String passwordHold ;
+            String verifAnswer=ans1.getText()+ans2.getText()+ans3.getText();
+            if(passwordInput.getText()==null)
+                passwordHold=passwordText.getText();
+            else passwordHold=passwordInput.getText();
+            signupButon(userNameHold,emailHold,passwordHold,verifAnswer);
+        });
 
-
-
-
-
-        signUpBox.getChildren().addAll();
+        container1.prefWidthProperty().bind();
+        signUpBox.getChildren().addAll(container1,container2);
         return signUpBox;
     }
     private Button showPassword(PasswordField passwordField, TextField passwordText){
@@ -129,7 +146,7 @@ public class LogIn_SignUpGUI extends Application{
                 passwordField.setVisible(false);
 
                 //show.setGraphic(new FontIcon("fa-eye"));
-                eyeIcon.setIconCode(FontAwesome.EYE);
+                eyeIcon.setIconLiteral("fa-eye");
 
             }else{
                 passwordField.setText(passwordText.getText());
@@ -140,10 +157,17 @@ public class LogIn_SignUpGUI extends Application{
                 passwordText.setVisible(false);
 
                 //show.setGraphic(new FontIcon("fa-eye-slash"));
-                eyeIcon.setIconCode(FontAwesome.EYE_SLASH);
+                eyeIcon.setIconLiteral("fa-eye-slash");
             }
 
         });
        return show;
+    }
+    private void signupButon(String userName,String email, String password, String verificaitionReply){
+        signUpObj.setUserEmail(email);
+        signUpObj.setUserName(userName);
+        signUpObj.setPassword(password);
+        signUpObj.setVerificationReply(verificaitionReply);
+        signUpObj.saveAccount();
     }
 }

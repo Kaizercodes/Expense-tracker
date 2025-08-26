@@ -24,6 +24,9 @@ public class Expenses extends Application {
             //saving plans
            PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("ExpensePlans.txt")));
             for(int i = 0; i<planned.size(); i++){
+
+
+
                 writer.write(planned.get(i));
                 writer.println();
             }
