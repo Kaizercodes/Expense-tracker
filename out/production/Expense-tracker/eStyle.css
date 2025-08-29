@@ -1,0 +1,64 @@
+
+      /* Expenses styling.css */
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-background-color: #f5f7fa;
+}
+
+/* Style labels*/
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+/* Style buttons */
+.button {
+    -fx-background-color:#228B22;
+    -fx-text-fill: white;
+    -fx-background-radius: 20px;
+    -fx-padding: 6px 15px;
+}
+.button:hover {
+    -fx-background-color: #1e5bbf;
+}
+/* Style search bar (TextField) */
+.text-field {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 20px;
+    -fx-padding: 5px 10px;
+}
+#appTitle{
+    -fx-font-family: Arial;
+    -fx-font-weight: Bold;
+    -fx-font-size: 20;
+    -fx-text-fill: #008000;
+}
+#reload{
+    -fx-text-fill: #778899;
+    -fx-background-color: transparent;
+}
+#reload:hover{
+    -fx-text-fill: #008000;
+    -fx-cursor: hand;
+}
+#leftPaneBo{
+    -fx-background-color: white;
+    -fx-padding: 10px;
+}
+#categoryBar{
+    -fx-border-color: #778899;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-background-color: white;
+    -fx-width: 300;
+    -fx-height: 50;
+}
+#categoryBar.label{
+    -fx-font-family: "comic Sans MS";
+    -fx-font-weight: Bold;
+}
+#sideButtons:hover{
+    -fx-text-fill: green;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
