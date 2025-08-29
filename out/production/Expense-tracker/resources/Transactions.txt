@@ -1,13 +1,30 @@
-Debt Repayment:gggdgdgd:250
-Food & Groceries: hfhfhfhf : 250
-Housing and Utilities: hhdhdh :500
-Transportation: ggdgdgd :500
-Education: hfhfhfhfh :500
-Health & Medical:hdhdhd:500
-Personal & Fam: dgdgdgd :400
-Food & Groceries: hfhfhfhf : 50
-Entertainment & Recreation: xgggdgdgddfd :500
-Savings & Investment:hhhdhdhdhdhd:500
-Debt Repayment:gggdgdgd:100
-Other:ggdgdgd:300
-Personal & Fam: dgdgdgd :75
+2025-07-03,45.50,Food & Groceries, Weekly grocery shopping
+2025-07-05,22.75,Transportation, Gas refill
+2025-07-07,89.99,Health & Medical, Prescription medication
+2025-07-08,15.25,Food & Groceries, Lunch at work
+2025-07-10,1200.00,Housing & Utilities, Monthly rent payment
+2025-07-12,65.30,Entertainment & recreation, Movie tickets and dinner
+2025-07-14,35.00,Personal & Fam, Haircut and grooming
+2025-07-16,150.00,Education,Textbook purchase
+2025-07-18,78.45,Food & Groceries, Supermarket run
+2025-07-19,45.00,Transportation,Public transit pass
+2025-07-21,300.00,Savings & Investment, Monthly investment contribution
+2025-07-23,29.99,Entertainment & recreation, Streaming subscription
+2025-07-25,85.00,Health & Medical, Dental checkup
+2025-07-27,22.50,Food & Groceries, Coffee and snacks
+2025-07-28,450.00,Debt repayment, Credit card payment
+2025-07-30,18.75,Food & Groceries, Quick dinner
+2025-08-01,95.00,Transportation,Car maintenance
+2025-08-03,67.80,Food & Groceries, Weekend groceries
+2025-08-05,35.00,Entertainment & recreation, Bowling night
+2025-08-07,1200.00,Housing & Utilities, August rent
+2025-08-09,28.50,Personal & Fam, Toiletries and supplies
+2025-08-11,200.00,Education,Online course fee
+2025-08-13,55.25,Food & Groceries, Office lunch delivery
+2025-08-15,89.00,Health & Medical,Vitamins and supplements
+2025-08-17,75.00,Transportation,New bus pass
+2025-08-19,42.30,Food & Groceries, Breakfast items
+2025-08-21,350.00,Savings & Investment, Extra savings deposit
+2025-08-23,60.00,Entertainment & recreation, Concert tickets
+2025-08-25,125.00,Personal & Fam, Clothing purchase
+2025-08-27,500.00,Debt repayment, Student loan payment
